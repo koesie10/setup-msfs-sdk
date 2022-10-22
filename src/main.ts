@@ -14,6 +14,8 @@ async function run(): Promise<void> {
 
     const version = versionRegex.exec(url)?.groups?.[1];
     if (version) {
+      core.info(`Trying to find ${version} in cache`);
+
       toolPath = tc.find(toolName, version);
       core.info(`Found version ${version} in cache`);
     }
@@ -39,7 +41,7 @@ async function run(): Promise<void> {
         );
       }
 
-      core.info(`Caching SDK version ${version}`);
+      core.info(`Caching SDK version ${downloadedVersion}`);
 
       toolPath = await tc.cacheDir(msfsSdkPath, toolName, downloadedVersion);
     }

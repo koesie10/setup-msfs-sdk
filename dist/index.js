@@ -53,6 +53,7 @@ function run() {
             let toolPath;
             const version = (_b = (_a = versionRegex.exec(url)) === null || _a === void 0 ? void 0 : _a.groups) === null || _b === void 0 ? void 0 : _b[1];
             if (version) {
+                core.info(`Trying to find ${version} in cache`);
                 toolPath = tc.find(toolName, version);
                 core.info(`Found version ${version} in cache`);
             }
@@ -68,7 +69,7 @@ function run() {
                 if (version && version !== downloadedVersion) {
                     core.warning(`Version mismatch: expected ${version}, got ${downloadedVersion}`);
                 }
-                core.info(`Caching SDK version ${version}`);
+                core.info(`Caching SDK version ${downloadedVersion}`);
                 toolPath = yield tc.cacheDir(msfsSdkPath, toolName, downloadedVersion);
             }
             core.exportVariable('MSFS_SDK', toolPath);
