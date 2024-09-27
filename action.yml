@@ -6,7 +6,7 @@ inputs:
     required: true
     description: 'URL to MSFS SDK ZIP file. The ZIP must contain the SimConnect SDK directory at the top-level.'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'code'
